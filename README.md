@@ -18,7 +18,7 @@ Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` 
   system yet.
 - Clone this repo, e.g. to the Desktop of Raspberry (`git clone https://github.com/BernhardSchlegel/rig-resetter.git`).
 - Modify the `config.json` to match your setup. Detailled information is provieded
-  below in the "Configuration" section.
+  below in the [Configuration](#Configuration) section.
 - navigate to directory and run it using Python 3: `python3 rig-resetter.py`
 - You're done.
 
@@ -62,7 +62,7 @@ A minimal config will look like this:
 - `nav`: Navigation to the `workerLastSubmitTime` in the JSON from the API.
    Usually you will just use `"workers/$YOUR_WORKER_NAME$/workerLastSubmitTime"`
 - `ip`: IP of the WiFi switch in your lokal network. If you have trouble figuring
-   this out, see Section "Finding out the IP".
+   this out, see Section [Finding out the IP](#finding-out-the-ip).
 - `timeout_minutes`: If the last submit time of this worker was longer ago than
    the specified minutes in this field, your rig will be resetted.
 - `distance_seconds`: How many seconds will be rig be in the "off" state before
@@ -77,10 +77,10 @@ A minimal config will look like this:
 Of course you can brute force / port scan - but this is the gentle way (how I did it):
 
 1. First, we need to find out the MAC address. Look it up in the (Kasa) app like so:
-- Then, go to the devices screen of your router. Look up, which IP adress (e.g.
+1. Then, go to the devices screen of your router. Look up, which IP adress (e.g.
    `192.168.178.42` belongs to the MAC-Adress (e.g. `50:C7:BF:BD:9A:F4`) we
    identified in the last step.
-- Set this as <IP> in the config-file.
+1. Set this as <IP> in the config-file.
 
 
 ## Supported pools and WiFi switches
