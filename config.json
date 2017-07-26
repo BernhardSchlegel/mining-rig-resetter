@@ -1,0 +1,49 @@
+{
+  "setting_main_cycle_time_minutes": 10,
+  "settings_on_queue_cycle_seconds": 5,
+  "pools": [
+    {
+      "json_url": "https://ethermine.org/api/miner_new/362D2B36e1152f305938674bbb898DaF502820D3",
+      "rigs": [
+        {
+          "name": "frankenstein1",
+          "nav": "workers/frankenstein1/workerLastSubmitTime",
+          "ip": "192.168.49.42",
+          "timeout_minutes": 25,
+          "distance_seconds": 15,
+          "grace_minutes": 10
+        },
+        {
+          "name": "frankenstein3",
+          "nav": "workers/frankenstein3/workerLastSubmitTime",
+          "ip": "192.168.49.43",
+          "timeout_minutes": 25,
+          "distance_seconds": 15,
+          "grace_minutes": 10
+        },
+        {
+          "name": "frankenstein4",
+          "nav": "workers/frankenstein4/workerLastSubmitTime",
+          "ip": "192.168.49.50",
+          "timeout_minutes": 25,
+          "distance_seconds": 15,
+          "grace_minutes": 10
+        }
+      ]
+    },
+    {
+      "json_url": "http://zcash.flypool.org/api/miner_new/t1REqNLEVKtuz1gy99riEZmBSwDPc6RcLka",
+      "rigs": [
+        {
+          "name": "frankenstein3",
+          "nav": "workers/frankenstein3/workerLastSubmitTime",
+          "ip": "192.168.49.43",
+          "timeout_minutes": 25,
+          "distance_seconds": 15,
+          "grace_minutes": 10
+        }
+      ]
+    }
+
+  ]
+}
