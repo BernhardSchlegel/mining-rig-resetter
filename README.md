@@ -96,16 +96,16 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 
 - [TP-Link HS100](http://amzn.to/2tGy4sN)
 - [TP-Link HS110](http://amzn.to/2utluf2)
-- If you want to add a switch, send me a pull request.
+- If you want to add a switch, send me a pull request or the hardware.
 
 ## Setting up on a Raspberry Pi to run on startup
 
-1. Open the terminal (Ctrl+Alt+T) or ssh to your Raspberrry Pi.
+1. Open the terminal (<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>) if you hooked up your Raspberry Pi to a display or ssh to your Raspberrry Pi.
 1. Change directory to Desktop `cd Desktop` and create a new folder `mkdir wd`, open that folder `cd wd`.
 1. Clone the repo using `git clone https://github.com/BernhardSchlegel/mining-rig-resetter`.
 1. Open crontab using `crontab -e`.
 1. Paste `@reboot sh /home/pi/Desktop/wd/mining-rig-resetter/ssh/launcher.sh >/home/pi/Desktop/wd/mining-rig-resetter/ssh/cronlog 2>&1` to the end of the file
-1. exit using Ctrl+X, confirming with Y and Enter
+1. exit using <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirming with <kbd>Y</kbd> and <kbd>Return</kbd>
 
 
 ## TODO
