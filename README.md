@@ -107,7 +107,7 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 1. If you're editing crontab the first time, a question will pop up, asking for your preffered editor. Go with nano (using <kbd>2</kbd> and <kbd>Return</kbd>).
 1. Paste `@reboot sh /home/pi/Desktop/wd/mining-rig-resetter/ssh/launcher.sh >/home/pi/Desktop/wd/mining-rig-resetter/ssh/cronlog 2>&1` to the end of the file and add a blank line afterwards.
 1. exit using <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirming with <kbd>Y</kbd> and <kbd>Return</kbd>
-1. Update your `requests` library for your Python3 environment. Just run `sudo pip3 install requests==2.11.1` in the shell.
+1. Download & install Anaconda frome [here](https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh). 
 
 ## TODO
 
