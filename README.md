@@ -104,8 +104,8 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 1. Change directory to Desktop `cd Desktop` and create a new folder `mkdir wd`, open that folder `cd wd`.
 1. Clone the repo using `git clone https://github.com/BernhardSchlegel/mining-rig-resetter`.
 1. Open crontab using `crontab -e`.
-1. If you're editing crontab the first time, a question will pop up, asking for your preffered editor. Go with nano (using <kbd>2</kbd> and <kbd>Return</kbd>.
-1. Paste `@reboot sh /home/pi/Desktop/wd/mining-rig-resetter/ssh/launcher.sh >/home/pi/Desktop/wd/mining-rig-resetter/ssh/cronlog 2>&1` to the end of the file
+1. If you're editing crontab the first time, a question will pop up, asking for your preffered editor. Go with nano (using <kbd>2</kbd> and <kbd>Return</kbd>).
+1. Paste `@reboot sh /home/pi/Desktop/wd/mining-rig-resetter/ssh/launcher.sh >/home/pi/Desktop/wd/mining-rig-resetter/ssh/cronlog 2>&1` to the end of the file and add a blank line afterwards.
 1. exit using <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirming with <kbd>Y</kbd> and <kbd>Return</kbd>
 
 
