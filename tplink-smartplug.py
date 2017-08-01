@@ -3,7 +3,8 @@
 # TP-Link Wi-Fi Smart Plug Protocol Client
 # For use with TP-Link HS-100 or HS-110
 #  
-# by Lubomir Stroetmann
+# by Lubomir Stroetmann (https://github.com/softScheck/tplink-smartplug)
+# modified by Bernhard Schlegel for Python3 support 
 # Copyright 2016 softScheck GmbH 
 # 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +18,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-# 
-#
+
+
 import socket
 import argparse
 
