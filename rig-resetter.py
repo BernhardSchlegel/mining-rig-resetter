@@ -10,9 +10,15 @@ import csv
 
 from socket import error as SocketError
 
-setting_main_cycle_time_min = 1  # every X minutes all rigs will be checked
-settings_on_queue_cycle_s = 5   # every X seconds queue will be checked if there are rigs to be turned on again
+# Settings
+setting_time_before_first_run_min = 5  # time in minutes before main loop is executed for the first time
+setting_main_cycle_time_min = 1        # every X minutes all rigs will be checked
+settings_on_queue_cycle_s = 5          # every X seconds queue will be checked if there are rigs to be turned on again
 
+# Globals
+first_main_loop_iteration = True       # True for first iteration, False else
+
+# Logging
 logging.getLogger("requests").setLevel(logging.CRITICAL)
 logger_format = '%(asctime)-15s%,%(levelname)%,s%(msg)s'
 logging.basicConfig(filename='log.log', format=logger_format, level=logging.DEBUG)
@@ -38,7 +44,7 @@ logs to the console
 """
 def log_console(level, type, rig, value):
     now = datetime.datetime.now()
-    print(now.strftime("%Y-%m-%d %H:%M") + "[" + level + "] : " + type + ", " + rig + ", " + value)
+    print(now.strftime("%Y-%m-%d %H:%M") + " [" + level + "]: " + type + ", " + rig + ", " + value)
 
 """
 Logs a info to the csv logfile and prints it to the console.
@@ -146,19 +152,33 @@ def check_on_queue():
 This loop will do all checkings and shut down the rigs
 """
 def main_loop():
-    try:
-        for pool in pools:
-            # get last alive from api
-            response = requests.get(pool['json_url'])
-            data = json.loads(response.content.decode())
+    global first_main_loop_iteration
 
-            check_rigs(data, pool['rigs'])
+    distance_next_time = setting_main_cycle_time_min * 60
 
-    except SocketError as e:
+    if first_main_loop_iteration:
+        if setting_time_before_first_run_min > 0:
+            distance_next_time = setting_time_before_first_run_min * 60
+        else:
+            distance_next_time = 1
 
-        log_warn('error', 'main_loop', str(e))
+        first_main_loop_iteration = False
+        log_info('skipped', 'general',
+                 'first iteration skipped. next will be in {} minutes.'.format(setting_time_before_first_run_min))
+    else:
+        try:
+            for pool in pools:
+                # get last alive from api
+                response = requests.get(pool['json_url'])
+                data = json.loads(response.content.decode())
 
-    threading.Timer(setting_main_cycle_time_min * 60, main_loop).start()
+                check_rigs(data, pool['rigs'])
+
+        except SocketError as e:
+            log_warn('error', 'main_loop', str(e))
+            pass  # continue after exception
+
+    threading.Timer(distance_next_time, main_loop).start()
 
 # read in configuration JSON
 def field_exists(field_name, json, target = 'general'):
@@ -174,11 +194,15 @@ with open('config.json') as conf_file:
     conf_json = json.load(conf_file)
 
     # general settings
-    field_name = 'setting_main_cycle_time_minutes'
+    field_name = 'time_before_first_run_min'
+    if field_exists(field_name, conf_json):
+        setting_time_before_first_run_min = conf_json[field_name]
+
+    field_name = 'main_cycle_time_minutes'
     if field_exists(field_name, conf_json):
         setting_main_cycle_time_min = conf_json[field_name]
 
-    field_name = 'settings_on_queue_cycle_seconds'
+    field_name = 'on_queue_cycle_seconds'
     if field_exists(field_name, conf_json):
         settings_on_queue_cycle_s = conf_json[field_name]
 

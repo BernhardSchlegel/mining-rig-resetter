@@ -46,10 +46,14 @@ A minimal config will look like this:
       ]
     }
 
-- `setting_main_cycle_time_minutes`: This determines the frequency the API from
+- `setting_time_before_first_run_min`: Time in minutes before main loop where the
+  REST api is requested is executed for the first time. 2 minutes are recommended
+  if you're using WiFi. If you're connected using a Ethernet cable you can set this
+  to 0.
+- `main_cycle_time_minutes`: This determines the frequency the API from
   the pool will be queried. Usually 10 minutes works fine. Setting the value too
   low will result in the API blocking you (to avoid DDoS).
-- `settings_on_queue_cycle_seconds`: Sets how often the "turning back on" loop
+- `on_queue_cycle_seconds`: Sets how often the "turning back on" loop
   runs. So if this is set to `5`, the script will check every 5 seconds if there
   are rigs due to turned on again.
 - `pools`: An array holding multiple pool objects. Every pool object has to have
