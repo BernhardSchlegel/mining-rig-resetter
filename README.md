@@ -27,8 +27,9 @@ Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` 
 A minimal config will look like this:
 
     {
-      "setting_main_cycle_time_minutes": 10,
-      "settings_on_queue_cycle_seconds": 5,
+      "time_before_first_run_min": 2,
+      "main_cycle_time_minutes": 10,
+      "on_queue_cycle_seconds": 5,
       "pools": [
         {
           "json_url": "https://ethermine.org/api/miner_new/362D2B36e1152f305938674bbb898DaF502820D3",
@@ -111,7 +112,7 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 1. If you're editing crontab the first time, a question will pop up, asking for your preffered editor. Go with nano (using <kbd>2</kbd> and <kbd>Return</kbd>).
 1. Paste `@reboot python /home/pi/myscript.py &` to the end of the file and add a blank line afterwards.
 1. exit using <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirming with <kbd>Y</kbd> and <kbd>Return</kbd>
-1. Download & install Anaconda frome [here](https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh) using `bash ./Anaconda3-4.2.0-Linux-x86_64.sh)`. 
+1. Download & install Anaconda frome [here](https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh) using `bash ./Anaconda3-4.2.0-Linux-x86_64.sh`. 
 
 ## TODO
 
