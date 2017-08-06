@@ -10,32 +10,32 @@
           "name": "frankenstein1",
           "nav": "workers/frankenstein1/workerLastSubmitTime",
           "ip": "192.168.49.42",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "timeout_minutes": 15,
+          "distance_seconds": 10,
           "grace_minutes": 10
         },
         {
           "name": "frankenstein2",
           "nav": "workers/frankenstein2/workerLastSubmitTime",
-          "ip": "192.168.49.42",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "ip": "192.168.49.52",
+          "timeout_minutes": 15,
+          "distance_seconds": 60,
           "grace_minutes": 10
         },
         {
           "name": "frankenstein3",
           "nav": "workers/frankenstein3/workerLastSubmitTime",
           "ip": "192.168.49.43",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "timeout_minutes": 15,
+          "distance_seconds": 10,
           "grace_minutes": 10
         },
         {
           "name": "frankenstein4",
           "nav": "workers/frankenstein4/workerLastSubmitTime",
           "ip": "192.168.49.50",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "timeout_minutes": 15,
+          "distance_seconds": 10,
           "grace_minutes": 10
         }
       ]
