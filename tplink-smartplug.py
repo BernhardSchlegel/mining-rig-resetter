@@ -90,7 +90,7 @@ else:
 try:
 	sock_tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	sock_tcp.connect((ip, port))
-	sock_tcp.send(encode(encrypt(cmd)))
+	sock_tcp.send(encrypt(cmd).encode())
 	data = sock_tcp.recv(2048)
 	sock_tcp.close()
 	
