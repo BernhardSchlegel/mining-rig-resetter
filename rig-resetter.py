@@ -68,10 +68,10 @@ what should be executed is 'python tplink-smartplug.py -t 192.168.178.10 -c on'
 def dropCommand(ip, cmd):
     # TODO: call asynchronously
     # from subprocess import Popen
-    # p = Popen(['python', '\"' + path_to_py + '\" -t ' + ip + ' -c ' + cmd])  # something long running
+    # p = Popen(['python2', '\"' + path_to_py + '\" -t ' + ip + ' -c ' + cmd])  # something long running
 
     path_to_py = os.path.join(os.getcwd(), "tplink-smartplug.py")
-    os.system('python \"' + path_to_py + '\" -t ' + ip + ' -c ' + cmd)
+    os.system('python2 \"' + path_to_py + '\" -t ' + ip + ' -c ' + cmd)
 
 
 """
