@@ -21,7 +21,7 @@ first_main_loop_iteration = True       # True for first iteration, False else
 # Logging
 logging.getLogger("requests").setLevel(logging.CRITICAL)
 logger_format = '%(asctime)-15s%,%(levelname)%,s%(msg)s'
-logging.basicConfig(filename='log.log', format=logger_format, level=logging.DEBUG)
+logging.basicConfig(filename='log.csv', format=logger_format, level=logging.DEBUG)
 
 pools = []          # pools, holds all infos about pools, atm only the adress. As well as all information about
                     # the rigs like name, ip, last reset
