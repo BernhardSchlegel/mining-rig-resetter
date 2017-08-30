@@ -116,6 +116,7 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 
 ## TODO
 
+- Reset based on hashrate
 - Colors in console.
 - Ease the setup-process.
 - Add power usage logging.
