@@ -16,7 +16,7 @@ Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` 
 
 - Install Python 3.5 (I recommend using [Anaconda](https://www.continuum.io/downloads) in case you dont have Python on your
   system yet.
-- Clone this repo, e.g. to the Desktop of Raspberry (`git clone https://github.com/BernhardSchlegel/rig-resetter.git`).
+- Clone this repo, e.g. to the Desktop of Raspberry (`git clone https://github.com/BernhardSchlegel/mining-rig-resetter.git`).
 - Modify the `config.json` to match your setup. Detailled information is provieded
   below in the [Configuration](#Configuration) section.
 - navigate to directory and run it using Python 3: `python3 rig-resetter.py`
