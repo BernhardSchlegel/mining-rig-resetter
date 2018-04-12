@@ -1,7 +1,6 @@
 import datetime         # converting ints to datestrings
 import json             # decompiling json
 import os               # executing other python script
-import logging          # logging events
 import threading        # execute mainloop cyclically
 import requests
 import time
@@ -17,12 +16,6 @@ settings_on_queue_cycle_s = 5          # every X seconds queue will be checked i
 
 # Globals
 first_main_loop_iteration = True       # True for first iteration, False else
-
-# Logging
-logging.getLogger("requests").setLevel(logging.CRITICAL)
-logger_format = '%(asctime)-15s%,%(levelname)%,s%(msg)s'
-logging.basicConfig(filename='log.csv', format=logger_format, level=logging.DEBUG)
-
 pools = []          # pools, holds all infos about pools, atm only the adress. As well as all information about
                     # the rigs like name, ip, last reset
 turn_on_queue = []  # rigs that are off, that are scheduled to be turned on again
@@ -85,15 +78,19 @@ def check_rigs(data, rigs):
         ts_current_time = round(time.time())
 
         result = data
-        rig_in_json = True
-        for node in rig['nav'].split('/'):
-            if node not in result:
-                rig_in_json = False
-                log_warn('rig_not_in_json', rig['name'], '')
-                result = 0
+        rig_in_json = False
+
+        # get corresponding result from json
+        for rig_result in data["data"]:
+            if rig_result[rig["name_field"]] == rig["name"]:
+                result = rig_result[rig["time_field"]]
+                rig_in_json = True
                 break
-            else:
-                result = result[node]
+
+        # not found
+        if not rig_in_json:
+            log_warn('rig_not_in_json', rig['name'], '')
+            result = 0
 
         rig['ts_last_alive'] = result
         log_console('INFO', 'alive', rig['name'], 'last alive signal from worker {} was at {} - {} minutes ago.'.format(
@@ -227,9 +224,13 @@ with open('config.json') as conf_file:
                     if field_exists(field_name, object):
                         temp_name = object[field_name]
 
-                    field_name = 'nav'
+                    field_name = 'name_field'
                     if field_exists(field_name, object, target=temp_name):
-                        temp_nav = object[field_name]
+                        temp_name_field = object[field_name]
+
+                    field_name = 'time_field'
+                    if field_exists(field_name, object, target=temp_name):
+                        temp_time_field = object[field_name]
 
                     field_name = 'ip'
                     if field_exists(field_name, object, target=temp_name):
@@ -248,15 +249,20 @@ with open('config.json') as conf_file:
                         temp_grace = object[field_name]
 
                     temp_rig = {'name': temp_name,
-                                'nav': temp_nav,
+                                'name_field': temp_name_field,
+                                'time_field': temp_time_field,
                                 'ip': temp_ip,
                                 'timeout': temp_timeout,  # minutes
                                 'distance': temp_distance,  # seconds
                                 'grace': temp_grace}  # minutes
 
-                    log_info('rig_init', temp_name, 'nav={}, ip={}, timeout={}, distance={}, grace={}'.format(
-                        temp_nav, temp_ip, temp_timeout, temp_distance, temp_grace
-                    ))
+                    log_info('rig_init', temp_name, 'name_field={}, time_field={}, ip={}, '
+                                                    'timeout={}, distance={}, grace={}'.format(temp_name_field,
+                                                                                               temp_time_field,
+                                                                                               temp_ip,
+                                                                                               temp_timeout,
+                                                                                               temp_distance,
+                                                                                               temp_grace))
                     temp_rig['last_reset'] = round(time.time()) - 60 * 60
                     temp_rig['last_check'] = round(time.time()) - 60 * 60
                     temp_rigs.append(temp_rig)
@@ -268,5 +274,6 @@ with open('config.json') as conf_file:
             log_info('pool_init', str(temp_pool_id), 'json_url={}, num_of_rigs={}'.format(temp_json_url, len(temp_rigs)))
 
 # execute loops
+log_info('startup', 'general', 'rig-resetter v.1.1 initialized')
 main_loop()
 check_on_queue()

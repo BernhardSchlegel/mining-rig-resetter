@@ -4,38 +4,24 @@
   "on_queue_cycle_seconds": 5,
   "pools": [
     {
-      "json_url": "https://ethermine.org/api/miner_new/362D2B36e1152f305938674bbb898DaF502820D3",
+      "json_url": "https://api.ethermine.org/miner/6635f43003cbb97eb50a36427b6a08e288b16520/workers",
       "rigs": [
         {
-          "name": "frankenstein1",
-          "nav": "workers/frankenstein1/workerLastSubmitTime",
+          "name": "default1",
+		  "name_field": "worker",
+          "time_field": "lastSeen",
           "ip": "192.168.49.42",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "timeout_minutes": 15,
+          "distance_seconds": 10,
           "grace_minutes": 10
         },
         {
-          "name": "frankenstein2",
-          "nav": "workers/frankenstein2/workerLastSubmitTime",
+          "name": "default2",
+		  "name_field": "worker",
+          "time_field": "lastSeen",
           "ip": "192.168.49.52",
           "timeout_minutes": 15,
-          "distance_seconds": 30,
-          "grace_minutes": 10
-        },
-        {
-          "name": "frankenstein3",
-          "nav": "workers/frankenstein3/workerLastSubmitTime",
-          "ip": "192.168.49.43",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
-          "grace_minutes": 10
-        },
-        {
-          "name": "frankenstein4",
-          "nav": "workers/frankenstein4/workerLastSubmitTime",
-          "ip": "192.168.49.50",
-          "timeout_minutes": 25,
-          "distance_seconds": 15,
+          "distance_seconds": 10,
           "grace_minutes": 10
         }
       ]
