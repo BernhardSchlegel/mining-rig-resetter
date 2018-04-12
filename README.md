@@ -27,19 +27,20 @@ Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` 
 A minimal config will look like this:
 
     {
-      "time_before_first_run_min": 2,
+      "time_before_first_run_min": 0,
       "main_cycle_time_minutes": 10,
       "on_queue_cycle_seconds": 5,
       "pools": [
         {
-          "json_url": "https://ethermine.org/api/miner_new/362D2B36e1152f305938674bbb898DaF502820D3",
+          "json_url": "https://api.ethermine.org/miner/6635f43003cbb97eb50a36427b6a08e288b16520/workers",
           "rigs": [
             {
-              "name": "frankenstein1",
-              "nav": "workers/frankenstein1/workerLastSubmitTime",
+              "name": "default1",
+    		  "name_field": "worker",
+              "time_field": "lastSeen",
               "ip": "192.168.49.42",
-              "timeout_minutes": 25,
-              "distance_seconds": 15,
+              "timeout_minutes": 15,
+              "distance_seconds": 10,
               "grace_minutes": 10
             }
           ]
@@ -63,9 +64,11 @@ A minimal config will look like this:
    walled address - anything else can stay the same.
 - `rigs`: An array of objects that describe your rig. Every rig has to have the
    following properties:
-- `name`: Name of the rig. This is used for logging.
-- `nav`: Navigation to the `workerLastSubmitTime` in the JSON from the API.
-   Usually you will just use `"workers/$YOUR_WORKER_NAME$/workerLastSubmitTime"`
+- `name`: Name of the rig. This is used for logging and for accessing the API.
+- `name_field`: This determines the name of the field where the rig-resetter will
+   search for the name. `worker` is fine for ethermine.
+- `time_field`: sets how the field is called where the last share submit time is
+   responded. `lastSeen` is fine for ethermine.
 - `ip`: IP of the WiFi switch in your lokal network. If you have trouble figuring
    this out, see Section [Finding out the IP](#finding-out-the-ip).
 - `timeout_minutes`: If the last submit time of this worker was longer ago than
@@ -112,7 +115,7 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 1. If you're editing crontab the first time, a question will pop up, asking for your preffered editor. Go with nano (using <kbd>2</kbd> and <kbd>Return</kbd>).
 1. Paste `@reboot sh /home/pi/Desktop/wd/mining-rig-resetter/ssh/launcher.sh >/home/pi/Desktop/wd/mining-rig-resetter/ssh/cronlog 2>&1` to the end of the file and add a blank line afterwards.
 1. exit using <kbd>Ctrl</kbd>+<kbd>X</kbd>, confirming with <kbd>Y</kbd> and <kbd>Return</kbd>
-1. Download & install Anaconda frome [here](https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh) using `bash ./Anaconda3-4.2.0-Linux-x86_64.sh`. 
+1. Download & install Anaconda frome [here](https://repo.continuum.io/archive/Anaconda3-4.2.0-Linux-x86_64.sh) using `bash ./Anaconda3-4.2.0-Linux-x86_64.sh`.
 
 ## TODO
 
