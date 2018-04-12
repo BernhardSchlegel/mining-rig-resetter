@@ -95,9 +95,9 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 
 ### Pools
 
-- [ethermine.org](https://ethermine.org/), (`workers/<YOUR_WORKER_NAME>/workerLastSubmitTime`)
-- [zcash.flypool.org](http://zcash.flypool.org/), (`workers/<YOUR_WORKER_NAME>/workerLastSubmitTime`)
-- [etc.ethermine.org](https://etc.ethermine.org/), (`workers/<YOUR_WORKER_NAME>/workerLastSubmitTime`)
+- [ethermine.org](https://ethermine.org/)
+- [zcash.flypool.org](http://zcash.flypool.org/)
+- [etc.ethermine.org](https://etc.ethermine.org/)
 - If you want to add a pool, send me a pull request. I'm happy with ethermine atm.
 
 ### WiFi Switches
@@ -119,8 +119,8 @@ Of course you can brute force / port scan - but this is the gentle way (how I di
 
 ## TODO
 
-- Reset based on hashrate
-- Colors in console.
-- Ease the setup-process.
-- Add power usage logging.
-- Add hashrate logging.
+- [] Reset based on hashrate
+- [] Colors in console.
+- [] Ease the setup-process.
+- [] Add power usage logging.
+- [] Add hashrate logging.
