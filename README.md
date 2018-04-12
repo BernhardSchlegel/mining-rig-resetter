@@ -36,7 +36,7 @@ A minimal config will look like this:
           "rigs": [
             {
               "name": "default1",
-    		  "name_field": "worker",
+    		      "name_field": "worker",
               "time_field": "lastSeen",
               "ip": "192.168.49.42",
               "timeout_minutes": 15,
