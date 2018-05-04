@@ -89,10 +89,16 @@ def check_rigs(data, rigs):
 
         # not found
         if not rig_in_json:
+            # rig is not in the config file
             log_warn('rig_not_in_json', rig['name'], '')
             result = 0
 
         rig['ts_last_alive'] = result
+
+        if result is None: # not 'ts_last_alive' in rig.keys():
+            # rig is not in the json server response
+            rig['ts_last_alive'] = 0
+
         log_console('INFO', 'alive', rig['name'], 'last alive signal from worker {} was at {} - {} minutes ago.'.format(
             rig['name'], rig['ts_last_alive'], round((ts_current_time-rig['ts_last_alive'])/60)))
 
