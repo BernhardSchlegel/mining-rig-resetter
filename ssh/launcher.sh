@@ -1,4 +1,4 @@
 cd /home/pi/Desktop/wd/mining-rig-resetter/
-python rig-resetter.py
+/home/pi/miniconda3/bin/python rig-resetter.py
 cd /
 

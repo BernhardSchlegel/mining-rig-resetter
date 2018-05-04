@@ -10,8 +10,6 @@ from the guys from [softscheck.com](https://www.softscheck.com/en/reverse-engine
 For the full story, check out [Reverse Engineering the TP-Link HS110](https://www.softscheck.com/en/reverse-engineering-tp-link-hs110/) or visit
 their [project on  github](https://github.com/softScheck/tplink-smartplug).
 
-Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` (ETH), `1K7fNLAL6Thg88SNzMg6w7bQsSVeh1iLhR` (BTC), `t1REqNLEVKtuz1gy99riEZmBSwDPc6RcLka` (ZEC).
-
 ## Setup
 
 - Install Python 3.5 (I recommend using [Anaconda](https://www.continuum.io/downloads) in case you dont have Python on your
@@ -19,7 +17,7 @@ Like it? Donations are very welcome: `362D2B36e1152f305938674bbb898DaF502820D3` 
 - Clone this repo, e.g. to the Desktop of Raspberry (`git clone https://github.com/BernhardSchlegel/mining-rig-resetter.git`).
 - Modify the `config.json` to match your setup. Detailled information is provieded
   below in the [Configuration](#Configuration) section.
-- navigate to directory and run it using Python 3: `python3 rig-resetter.py`
+- navigate to directory and run it using Python 3: `python rig-resetter.py`
 - You're done.
 
 ## Configuration
